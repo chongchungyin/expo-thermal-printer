@@ -2,7 +2,7 @@ import { EventEmitter, NativeModulesProxy, Subscription } from 'expo-modules-cor
 
 // Import the native module. On web, it will be resolved to ExpoThermalPrinter.web.ts
 // and on native platforms to ExpoThermalPrinter.ts
-import { ChangeEventPayload, PrintParams } from './ExpoThermalPrinter.types';
+import { ChangeEventPayload, PrintParams, PrintContent } from './ExpoThermalPrinter.types';
 import ExpoThermalPrinterModule from './ExpoThermalPrinterModule';
 
 // Get the native constant value.
@@ -34,8 +34,8 @@ export function closePrinter(): boolean {
   return ExpoThermalPrinterModule.closePrinter();
 }
 
-export function printWithContent() {
-  return ExpoThermalPrinterModule.printWithContent();
+export function printWithContent(content: PrintContent) {
+  return ExpoThermalPrinterModule.printWithContent(content);
 }
 
 const emitter = new EventEmitter(ExpoThermalPrinterModule ?? NativeModulesProxy.ExpoThermalPrinter);

@@ -67,23 +67,23 @@ class ExpoThermalPrinterModule : Module() {
       printer.close()
     }
 
-    Function("printWithContent") {
+    Function("printWithContent") { printContent: PrintContent ->
       val barcodeEncoder = BarcodeEncoder()
       printer.init()
       printer.setAlign(PrintSerializable.ALIGN_CENTER.toInt())
-      printer.printText("Kennedy Road")
+      printer.printText(printContent.title)
       printer.wrapLines(1)
 
       printer.setAlign(PrintSerializable.ALIGN_CENTER.toInt())
-      printer.printImage(barcodeEncoder.encodeBitmap("qrcode testing", BarcodeFormat.QR_CODE, 100, 100))
+      printer.printTwoBarCode(PrintSerializable.TWO_QRCODE,10, 0, 0x48, printContent.qrContent);
       printer.wrapLines(1)
 
       printer.setAlign(PrintSerializable.ALIGN_CENTER.toInt())
-      printer.printText("Date : ")
+      printer.printText("Date : " + printContent.date)
       printer.wrapLines(1)
 
       printer.setAlign(PrintSerializable.ALIGN_CENTER.toInt())
-      printer.printText("Valid until : ")
+      printer.printText("Valid until : " + printContent.validUntil)
       printer.wrapLines(1)
 
       printer.Beeper(10.toByte())
@@ -98,6 +98,13 @@ internal data class PrintParams(
   @Field var serial: String? = null,
   @Field var port: String? = null,
 ) : Record
+
+internal data class PrintContent( 
+  @Field var title: String? = null,
+  @Field var qrContent: String? = null,
+  @Field var date: String? = null,
+  @Field var validUntil: String? = null,
+)
 
 private sealed class PrintState{
   object IDLE : PrintState()
