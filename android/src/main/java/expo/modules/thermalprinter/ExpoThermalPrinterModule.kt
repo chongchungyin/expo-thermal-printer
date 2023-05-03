@@ -104,7 +104,7 @@ internal data class PrintContent(
   @Field var qrContent: String? = null,
   @Field var date: String? = null,
   @Field var validUntil: String? = null,
-)
+) : Record
 
 private sealed class PrintState{
   object IDLE : PrintState()
