@@ -38,6 +38,11 @@ export function printWithContent(content: PrintContent) {
   return ExpoThermalPrinterModule.printWithContent(content);
 }
 
+
+export function printQRCode(qrCode: string) {
+  return ExpoThermalPrinterModule.printQRCode(qrCode);
+}
+
 const emitter = new EventEmitter(ExpoThermalPrinterModule ?? NativeModulesProxy.ExpoThermalPrinter);
 
 export function addChangeListener(listener: (event: ChangeEventPayload) => void): Subscription {

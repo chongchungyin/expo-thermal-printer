@@ -68,7 +68,6 @@ class ExpoThermalPrinterModule : Module() {
     }
 
     Function("printWithContent") { printContent: PrintContent ->
-      val barcodeEncoder = BarcodeEncoder()
       printer.init()
       printer.setAlign(PrintSerializable.ALIGN_CENTER.toInt())
       printer.printText(printContent.title)
@@ -84,6 +83,19 @@ class ExpoThermalPrinterModule : Module() {
 
       printer.setAlign(PrintSerializable.ALIGN_CENTER.toInt())
       printer.printText("Valid until : " + printContent.validUntil)
+      printer.wrapLines(1)
+
+      printer.Beeper(10.toByte())
+      printer.Cutter()
+      printer.OpenDrawer(true, true)
+    }
+
+    Function("printQRCode") { qrCode: String ->
+      printer.init()
+      printer.wrapLines(1)
+
+      printer.setAlign(PrintSerializable.ALIGN_CENTER.toInt())
+      printer.printTwoBarCode(PrintSerializable.TWO_QRCODE,10, 0, 0x48, qrCode);
       printer.wrapLines(1)
 
       printer.Beeper(10.toByte())
