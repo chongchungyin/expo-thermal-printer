@@ -110,8 +110,6 @@ class ExpoThermalPrinterModule : Module() {
         // Print Product details
         printer.setAlign(PrintSerializable.ALIGN_LEFT.toInt())
         printer.printText(printContent.itemPrice)
-        printer.wrapLines(1)
-        printer.printText(printContent.total)
         printer.wrapLines(2)
 
         // Print Octopus payment details
@@ -170,7 +168,6 @@ internal data class ReceiptContent(
   @Field var deviceNo: String? = null,
   @Field var receiptNo: String? = null,
   @Field var itemPrice: String? = null,
-  @Field var total: String? = null,
   @Field var octopusPayment: String? = null,
   @Field var octopusNo: String? = null,
   @Field var amountDeducted: String? = null,

@@ -20,7 +20,6 @@ export interface ReceiptContent {
   deviceNo: string;
   receiptNo: string;
   itemPrice: string;
-  total: string;
   octopusPayment: string;
   octopusNo: string;
   amountDeducted: string;
