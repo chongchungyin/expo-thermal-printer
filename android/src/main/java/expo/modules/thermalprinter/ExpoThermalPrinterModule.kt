@@ -159,18 +159,17 @@ internal data class PrintContent(
 ) : Record
 
 internal data class ReceiptContent(
-    @Field var dateTime: String? = null,
-    @Field var shopNo: String? = null,
-    @Field var deviceNo: String? = null,
-    @Field var receiptNo: String? = null,
-    @Field var itemName: String? = null,
-    @Field var itemPrice: String? = null,
-    @Field var total: String? = null,
-    @Field var octopusPayment: String? = null,
-    @Field var octopusNo: String? = null,
-    @Field var amountDeducted: String? = null,
-    @Field var remainingValue: String? = null,
-    @Field var lastAddValueDate: String? = null
+  @Field var dateTime: String? = null,
+  @Field var shopNo: String? = null,
+  @Field var deviceNo: String? = null,
+  @Field var receiptNo: String? = null,
+  @Field var itemPrice: String? = null,
+  @Field var total: String? = null,
+  @Field var octopusPayment: String? = null,
+  @Field var octopusNo: String? = null,
+  @Field var amountDeducted: String? = null,
+  @Field var remainingValue: String? = null,
+  @Field var lastAddValueDate: String? = null
 ) : Record
 
 private sealed class PrintState{
