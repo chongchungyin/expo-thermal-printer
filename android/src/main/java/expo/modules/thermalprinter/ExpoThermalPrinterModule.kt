@@ -96,28 +96,32 @@ class ExpoThermalPrinterModule : Module() {
         // Print Date/Time
         printer.setAlign(PrintSerializable.ALIGN_LEFT.toInt())
         printer.printText(printContent.dateTime)
-        printer.wrapLines(1)
+        printer.wrapLines(2)
 
         // Print Shop no., Device no., and Receipt no.
         printer.setAlign(PrintSerializable.ALIGN_LEFT.toInt())
         printer.printText(printContent.shopNo)
-        printer.printText(printContent.deviceNo)
-        printer.printText(printContent.receiptNo)
         printer.wrapLines(1)
+        printer.printText(printContent.deviceNo)
+        printer.wrapLines(1)
+        printer.printText(printContent.receiptNo)
+        printer.wrapLines(2)
 
         // Print Product details
         printer.setAlign(PrintSerializable.ALIGN_LEFT.toInt())
         printer.printText(printContent.itemPrice)
-        printer.printText(printContent.total)
-        printer.wrapLines(1)
+        printer.wrapLines(2)
 
         // Print Octopus payment details
         printer.setAlign(PrintSerializable.ALIGN_LEFT.toInt())
         printer.printText(printContent.octopusPayment)
-        printer.printText(printContent.octopusNo)
-        printer.printText(printContent.amountDeducted)
-        printer.printText(printContent.remainingValue)
         printer.wrapLines(1)
+        printer.printText(printContent.octopusNo)
+        printer.wrapLines(1)
+        printer.printText(printContent.amountDeducted)
+        printer.wrapLines(1)
+        printer.printText(printContent.remainingValue)
+        printer.wrapLines(2)
 
         // Print Last add value by Cash
         printer.setAlign(PrintSerializable.ALIGN_LEFT.toInt())
@@ -159,18 +163,16 @@ internal data class PrintContent(
 ) : Record
 
 internal data class ReceiptContent(
-    @Field var dateTime: String? = null,
-    @Field var shopNo: String? = null,
-    @Field var deviceNo: String? = null,
-    @Field var receiptNo: String? = null,
-    @Field var itemName: String? = null,
-    @Field var itemPrice: String? = null,
-    @Field var total: String? = null,
-    @Field var octopusPayment: String? = null,
-    @Field var octopusNo: String? = null,
-    @Field var amountDeducted: String? = null,
-    @Field var remainingValue: String? = null,
-    @Field var lastAddValueDate: String? = null
+  @Field var dateTime: String? = null,
+  @Field var shopNo: String? = null,
+  @Field var deviceNo: String? = null,
+  @Field var receiptNo: String? = null,
+  @Field var itemPrice: String? = null,
+  @Field var octopusPayment: String? = null,
+  @Field var octopusNo: String? = null,
+  @Field var amountDeducted: String? = null,
+  @Field var remainingValue: String? = null,
+  @Field var lastAddValueDate: String? = null
 ) : Record
 
 private sealed class PrintState{

@@ -13,3 +13,16 @@ export interface PrintContent {
   date: string;
   validUntil: string;
 }
+
+export interface ReceiptContent {
+  dateTime: string;
+  shopNo: string;
+  deviceNo: string;
+  receiptNo: string;
+  itemPrice: string;
+  octopusPayment: string;
+  octopusNo: string;
+  amountDeducted: string;
+  remainingValue: string;
+  lastAddValueDate: string;
+}
